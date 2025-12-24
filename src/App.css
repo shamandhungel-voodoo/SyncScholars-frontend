@@ -1,0 +1,62 @@
+.App {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+/* Timer styles */
+.timer-display {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.timer-controls button {
+  margin: 0 5px;
+}
+
+/* Chat styles */
+.chat-container {
+  height: 400px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: white;
+}
+
+.chat-message {
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 5px;
+  background-color: #e9ecef;
+}
+
+/* Focus indicator */
+.focus-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.focus-on {
+  background-color: #28a745;
+}
+
+.focus-off {
+  background-color: #dc3545;
+}
+
+/* Group member list */
+.member-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.member-item {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
