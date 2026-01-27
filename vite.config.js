@@ -1,4 +1,3 @@
-// frontend/vite.config.js
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
@@ -14,7 +13,7 @@ export default defineConfig(({ mode }) => {
     // Server configuration
     server: {
       port: 3000,
-      host: true, // Listen on all addresses
+      host: 'localhost', // Changed from 'true' to 'localhost'
       open: true, // Automatically open browser
       cors: true, // Enable CORS
       
@@ -24,7 +23,6 @@ export default defineConfig(({ mode }) => {
           target: env.VITE_API_URL || 'http://localhost:5000',
           changeOrigin: true,
           secure: false,
-          rewrite: (path) => path.replace(/^\/api/, '')
         },
         '/socket.io': {
           target: env.VITE_API_URL || 'http://localhost:5000',
@@ -37,19 +35,13 @@ export default defineConfig(({ mode }) => {
       // HMR configuration
       hmr: {
         overlay: true
-      },
-      
-      // Watch configuration
-      watch: {
-        usePolling: true,
-        interval: 1000
       }
     },
     
     // Build configuration
     build: {
       outDir: 'dist',
-      sourcemap: mode === 'development', // Generate sourcemaps in development
+      sourcemap: mode === 'development',
       minify: mode === 'production' ? 'terser' : false,
       rollupOptions: {
         output: {
@@ -63,8 +55,7 @@ export default defineConfig(({ mode }) => {
           assetFileNames: 'assets/[ext]/[name]-[hash].[ext]'
         }
       },
-      target: 'es2020',
-      cssTarget: 'chrome80'
+      target: 'es2020'
     },
     
     // Preview configuration (for built app)
@@ -87,15 +78,11 @@ export default defineConfig(({ mode }) => {
     
     // CSS configuration
     css: {
-      devSourcemap: true,
-      modules: {
-        localsConvention: 'camelCase'
-      }
+      devSourcemap: true
     },
     
     // Environment variables
     define: {
-      'process.env': env,
       __APP_VERSION__: JSON.stringify(process.env.npm_package_version || '1.0.0')
     },
     
@@ -112,13 +99,7 @@ export default defineConfig(({ mode }) => {
         'axios',
         'socket.io-client',
         'lucide-react'
-      ],
-      exclude: []
-    },
-    
-    // Esbuild configuration
-    esbuild: {
-      logOverride: { 'this-is-undefined-in-esm': 'silent' }
+      ]
     }
   }
 })
